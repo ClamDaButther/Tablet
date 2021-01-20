@@ -41,12 +41,12 @@ public class TabletMenu : MonoBehaviour
 
 
     //ButtonPads
-    private GameObject ButtonScreenCredit;
-    private GameObject ButtonScreenExit;
-    private GameObject ButtonScreenLevels;
-    private GameObject ButtonScreenOFFOption;
-    private GameObject ButtonScreenONOption;
-    private GameObject ButtonScreenStartScreen;
+    public GameObject ButtonScreenCredit;
+    public GameObject ButtonScreenExit;
+    public GameObject ButtonScreenLevels;
+    public GameObject ButtonScreenOFFOption;
+    public GameObject ButtonScreenONOption;
+    public GameObject ButtonScreenStartScreen;
 
 
     public float HTM = 0.2f;
@@ -162,37 +162,40 @@ public class TabletMenu : MonoBehaviour
         if (Vector3.Distance(Hand.transform.position, CreditScreen.transform.position) < HTM)
         {
             Tablet.GetComponent<Renderer>().material = m_EMcreditsscreen;
-            Destroy(ButtonScreenStartScreen);
-            Destroy(ButtonScreenCredit);
-            Destroy(ButtonScreenExit);
-            Destroy(ButtonScreenLevels);
-            Destroy(ButtonScreenOFFOption);
-            Destroy(ButtonScreenONOption);
-            Instantiate(ButtonScreenCredit);
+            ButtonScreenStartScreen.SetActive(false);
+            ButtonScreenCredit.SetActive(false);
+            ButtonScreenExit.SetActive(false);
+            ButtonScreenLevels.SetActive(false);
+            ButtonScreenOFFOption.SetActive(false);
+            ButtonScreenONOption.SetActive(false);
+            ButtonScreenCredit.SetActive(true);
         }
         if (Vector3.Distance(Hand.transform.position, ButtonLevelScreen.transform.position) < HTM)
         {
             Tablet.GetComponent<Renderer>().material = m_EMlevelscreen;
-            Destroy(ButtonScreenStartScreen);
-            Destroy(ButtonScreenCredit);
-            Destroy(ButtonScreenExit);
-            Destroy(ButtonScreenLevels);
-            Destroy(ButtonScreenOFFOption);
-            Destroy(ButtonScreenONOption);
-            Instantiate(ButtonScreenLevels);
+            ButtonScreenStartScreen.SetActive(false);
+            ButtonScreenCredit.SetActive(false);
+            ButtonScreenExit.SetActive(false);
+            ButtonScreenLevels.SetActive(false);
+            ButtonScreenOFFOption.SetActive(false);
+            ButtonScreenONOption.SetActive(false);
+            ButtonScreenLevels.SetActive(true);
         }
         if (Vector3.Distance(Hand.transform.position, OptionScreenButton.transform.position) < HTM)
         {
-            Destroy(ButtonScreenStartScreen);
-            Destroy(ButtonScreenCredit);
-            Destroy(ButtonScreenExit);
-            Destroy(ButtonScreenLevels);
-            Destroy(ButtonScreenOFFOption);
-            Destroy(ButtonScreenONOption);
-            Instantiate(ButtonScreenONOption);
+            Tablet.GetComponent<Renderer>().material = m_EMoptionsscreenON; 
+            ButtonScreenStartScreen.SetActive(false);
+            ButtonScreenCredit.SetActive(false);
+            ButtonScreenExit.SetActive(false);
+            ButtonScreenLevels.SetActive(false);
+            ButtonScreenOFFOption.SetActive(false);
+            ButtonScreenONOption.SetActive(false);
+            ButtonScreenONOption.SetActive(true);
         }
 
-        if(Tablet.GetComponent<Renderer>().material == m_EMoptionsscreenON)
+        ////m_EMoptionsscreenOFF?
+
+        if (Tablet.GetComponent<Renderer>().material == m_EMoptionsscreenON)
         {
             if (OPTIONON == true)
             {
@@ -221,25 +224,25 @@ public class TabletMenu : MonoBehaviour
         if (Vector3.Distance(Hand.transform.position, ButtonBack.transform.position) < HTM)
         {
             Tablet.GetComponent<Renderer>().material = m_EMstartscreen;
-            Destroy(ButtonScreenStartScreen);
-            Destroy(ButtonScreenCredit);
-            Destroy(ButtonScreenExit);
-            Destroy(ButtonScreenLevels);
-            Destroy(ButtonScreenOFFOption);
-            Destroy(ButtonScreenONOption);
-            Instantiate(ButtonScreenStartScreen);
+            ButtonScreenStartScreen.SetActive(false);
+            ButtonScreenCredit.SetActive(false);
+            ButtonScreenExit.SetActive(false);
+            ButtonScreenLevels.SetActive(false);
+            ButtonScreenOFFOption.SetActive(false);
+            ButtonScreenONOption.SetActive(false);
+            ButtonScreenStartScreen.SetActive(true);
         }
 
         if (Vector3.Distance(Hand.transform.position, ExitScreen.transform.position) < HTM)
         {
             Tablet.GetComponent<Renderer>().material = m_EMexitscreen;
-            Destroy(ButtonScreenStartScreen);
-            Destroy(ButtonScreenCredit);
-            Destroy(ButtonScreenExit);
-            Destroy(ButtonScreenLevels);
-            Destroy(ButtonScreenOFFOption);
-            Destroy(ButtonScreenONOption);
-            Instantiate(ButtonScreenExit);
+            ButtonScreenStartScreen.SetActive(false);
+            ButtonScreenCredit.SetActive(false);
+            ButtonScreenExit.SetActive(false);
+            ButtonScreenLevels.SetActive(false);
+            ButtonScreenOFFOption.SetActive(false);
+            ButtonScreenONOption.SetActive(false);
+            ButtonScreenExit.SetActive(true);
         }
 
         if (Vector3.Distance(Hand.transform.position, ButtonExitGame.transform.position) < HTM)

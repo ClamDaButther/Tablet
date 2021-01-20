@@ -49,6 +49,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: ButtonExitGame
       objectReference: {fileID: 0}
+    - target: {fileID: 296432728516138368, guid: f208267d5bc288d4f96fa2aa1801e4d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3717812897182355532, guid: f208267d5bc288d4f96fa2aa1801e4d0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -133,6 +138,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Back (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 296432728516138368, guid: f208267d5bc288d4f96fa2aa1801e4d0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3717812897182355532, guid: f208267d5bc288d4f96fa2aa1801e4d0,
         type: 3}
