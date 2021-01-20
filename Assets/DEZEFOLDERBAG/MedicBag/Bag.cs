@@ -35,13 +35,20 @@ public class Bag : MonoBehaviour
     void Start()
     {
         m_Animator = gameObject.GetComponent<Animator>();
+        Tourn = GameObject.FindGameObjectWithTag("Tourn");
+        CCeal = GameObject.FindGameObjectWithTag("CCeal");
+        Ars = GameObject.FindGameObjectWithTag("Ars");
+        Marker = GameObject.FindGameObjectWithTag("Marker");
+        Bandage = GameObject.FindGameObjectWithTag("Bandage");
     }
 
 
     void Update()
     {
+        
+
         //kijkt hoever de hand van de tas weg is(speciale collider die vast it aan de bovenkant van de tas(die ook verplaatst word als je de tas opent(verder in het script))
-        if (Vector3.Distance(Hand.transform.position, BagSide.transform.position) < RitsHet)
+        if (Vector3.Distance(Hand.transform.position, BagSide.transform.position) <= RitsHet)
         {
             if (Open == true)
             {
@@ -56,7 +63,9 @@ public class Bag : MonoBehaviour
             }
         }
 
-        
+     //   Debug.Log(Vector3.Distance(Hand.transform.position, BagSide.transform.position));
+        BagSide.transform.position = new Vector3(FullBag.transform.position.x + 0.0027f, FullBag.transform.position.y + 0.126f, FullBag.transform.position.z);
+        BagSide.transform.rotation = FullBag.transform.rotation;
 
     }
 
@@ -117,7 +126,7 @@ public class Bag : MonoBehaviour
     IEnumerator MyOpen()
     {
         Open2 = true;
-        m_Animator.Play("Take 001 0", -1, 0f);
+        m_Animator.Play("Take 001", -1, 0f);
         Debug.Log("333333");
 
         //Start animation of opening bag
@@ -157,7 +166,7 @@ public class Bag : MonoBehaviour
             Bandage.AddComponent<Interactable>();
             Bandage.AddComponent<Throwable>();
         }
-        BagSide.transform.position = new Vector3(FullBag.transform.position.x + 0.0027f, FullBag.transform.position.y + 0.126f, FullBag.transform.position.z + -0.0281f);
+     //   BagSide.transform.position = new Vector3(FullBag.transform.position.x + 0.0027f, FullBag.transform.position.y + 0.126f, FullBag.transform.position.z + -0.0281f);
         yield return new WaitForSeconds(6.0f);
         Open = true;
         Debug.Log("444444");
@@ -168,7 +177,7 @@ public class Bag : MonoBehaviour
         Open = false;
         //speelt de animatie van het dicht doen van de tas
        
-         m_Animator.Play("Take 001", -1, 0f);
+         m_Animator.Play("Take 001 0", -1, 0f);
         Debug.Log("555555");
 
         if (Tourn1Bool == true)
@@ -215,7 +224,8 @@ public class Bag : MonoBehaviour
         yield return new WaitForSeconds(1.2f);
   //      ParentingFound();
         //veranderd de positie van een object/collider die afgaat waneer je dichtgenoeg erbij bent(zit in het midden van de boven kant van de tas vast)
-        BagSide.transform.position = new Vector3(FullBag.transform.position.x + 0.0027f, FullBag.transform.position.y + 0.126f, FullBag.transform.position.z + 0.0281f);
+      //  BagSide.transform.position = new Vector3(FullBag.transform.position.x + 0.0027f, FullBag.transform.position.y + 0.126f, FullBag.transform.position.z + 0.0281f);
+       // BagSide.transform.rotation = new Vector3(FullBag.transform.rotation.x + 0.0027f, FullBag.transform.rotation.y + 0.126f, FullBag.transform.rotation.z + 0.0281f);
         yield return new WaitForSeconds(6.0f);
         // nu kan de tas weer open gemaakt worden
         Open2 = false;
