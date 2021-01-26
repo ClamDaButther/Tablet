@@ -64,7 +64,7 @@ public class Bag : MonoBehaviour
         }
 
      //   Debug.Log(Vector3.Distance(Hand.transform.position, BagSide.transform.position));
-        BagSide.transform.position = new Vector3(FullBag.transform.position.x + 0.0027f, FullBag.transform.position.y + 0.126f, FullBag.transform.position.z);
+        BagSide.transform.position = new Vector3(FullBag.transform.position.x, FullBag.transform.position.y + 0.126f, FullBag.transform.position.z);
         BagSide.transform.rotation = FullBag.transform.rotation;
 
     }

@@ -49,9 +49,74 @@ public class TabletMenu : MonoBehaviour
     public GameObject ButtonScreenStartScreen;
 
 
+
+    private bool Check1 = true;
+    private bool Check2 = false;
+    private bool Check3 = false;
+    private bool Check4 = false;
+    private bool Check5 = false;
+    private bool Check6 = false;
+
+
     public float HTM = 0.2f;
+
+
     void Update()
     {
+
+        Material[] mats = Tablet.GetComponent<Renderer>().materials;
+
+
+        if (ButtonScreenStartScreen.activeSelf == true)
+        {
+            Check1 = true;
+        }
+        if(ButtonScreenCredit.activeSelf == true)
+        {
+            Check2 = true;
+        }
+        if(ButtonScreenExit.activeSelf == true)
+        {
+            Check3 = true;
+        }
+        if(ButtonScreenLevels.activeSelf == true)
+        {
+            Check4 = true;
+        }
+        if(ButtonScreenOFFOption.activeSelf == true)
+        {
+            Check5 = true;
+        }
+        if(ButtonScreenONOption.activeSelf == true)
+        {
+            Check6 = true;
+        }
+
+        if (ButtonScreenStartScreen.activeSelf == false)
+        {
+            Check1 = false;
+        }
+        if (ButtonScreenCredit.activeSelf == false)
+        {
+            Check2 = false;
+        }
+        if (ButtonScreenExit.activeSelf == false)
+        {
+            Check3 = false;
+        }
+        if (ButtonScreenLevels.activeSelf == false)
+        {
+            Check4 = false;
+        }
+        if (ButtonScreenOFFOption.activeSelf == false)
+        {
+            Check5 = false;
+        }
+        if (ButtonScreenONOption.activeSelf == false)
+        {
+            Check6 = false;
+        }
+
 
         s1 = NullInvloed;
         s2 = NullInvloed;
@@ -76,23 +141,23 @@ public class TabletMenu : MonoBehaviour
         }
         if (GameObject.FindGameObjectWithTag("s2") != null)
         {
-            s1 = GameObject.FindGameObjectWithTag("s2");
+            s2 = GameObject.FindGameObjectWithTag("s2");
         }
         if (GameObject.FindGameObjectWithTag("s3") != null)
         {
-            s1 = GameObject.FindGameObjectWithTag("s3");
+            s3 = GameObject.FindGameObjectWithTag("s3");
         }
         if (GameObject.FindGameObjectWithTag("s4") != null)
         {
-            s1 = GameObject.FindGameObjectWithTag("s4");
+            s4 = GameObject.FindGameObjectWithTag("s4");
         }
         if (GameObject.FindGameObjectWithTag("s5") != null)
         {
-            s1 = GameObject.FindGameObjectWithTag("s5");
+            s5 = GameObject.FindGameObjectWithTag("s5");
         }
         if (GameObject.FindGameObjectWithTag("s6") != null)
         {
-            s1 = GameObject.FindGameObjectWithTag("s6");
+            s6 = GameObject.FindGameObjectWithTag("s6");
         }
 
         if (GameObject.FindGameObjectWithTag("ButtonExitGame") != null)
@@ -158,10 +223,12 @@ public class TabletMenu : MonoBehaviour
 
         Tablet.transform.position = FloatingPointBehindHead.transform.position;
 
+
+        /*
         //de rest
-        if (Vector3.Distance(Hand.transform.position, CreditScreen.transform.position) < HTM)
+        if (Vector3.Distance(Hand.transform.position, CreditScreen.transform.position) < HTM && Check5 == true || Check6 == true)
         {
-            Tablet.GetComponent<Renderer>().material = m_EMcreditsscreen;
+            mats[1] = m_EMcreditsscreen;
             ButtonScreenStartScreen.SetActive(false);
             ButtonScreenCredit.SetActive(false);
             ButtonScreenExit.SetActive(false);
@@ -169,10 +236,13 @@ public class TabletMenu : MonoBehaviour
             ButtonScreenOFFOption.SetActive(false);
             ButtonScreenONOption.SetActive(false);
             ButtonScreenCredit.SetActive(true);
+            
         }
-        if (Vector3.Distance(Hand.transform.position, ButtonLevelScreen.transform.position) < HTM)
+        */
+
+        if (Vector3.Distance(Hand.transform.position, ButtonLevelScreen.transform.position) < HTM && Check1 == true)
         {
-            Tablet.GetComponent<Renderer>().material = m_EMlevelscreen;
+            mats[1] = m_EMlevelscreen;
             ButtonScreenStartScreen.SetActive(false);
             ButtonScreenCredit.SetActive(false);
             ButtonScreenExit.SetActive(false);
@@ -180,10 +250,13 @@ public class TabletMenu : MonoBehaviour
             ButtonScreenOFFOption.SetActive(false);
             ButtonScreenONOption.SetActive(false);
             ButtonScreenLevels.SetActive(true);
+            
         }
-        if (Vector3.Distance(Hand.transform.position, OptionScreenButton.transform.position) < HTM)
+        
+        if (Vector3.Distance(Hand.transform.position, OptionScreenButton.transform.position) < HTM && Check1 == true)
         {
-            Tablet.GetComponent<Renderer>().material = m_EMoptionsscreenON; 
+
+            mats[1] = m_EMoptionsscreenON; 
             ButtonScreenStartScreen.SetActive(false);
             ButtonScreenCredit.SetActive(false);
             ButtonScreenExit.SetActive(false);
@@ -191,39 +264,40 @@ public class TabletMenu : MonoBehaviour
             ButtonScreenOFFOption.SetActive(false);
             ButtonScreenONOption.SetActive(false);
             ButtonScreenONOption.SetActive(true);
+           
         }
 
         ////m_EMoptionsscreenOFF?
 
-        if (Tablet.GetComponent<Renderer>().material == m_EMoptionsscreenON)
+        if (mats[1] == m_EMoptionsscreenON)
         {
             if (OPTIONON == true)
             {
-                Tablet.GetComponent<Renderer>().material = m_EMoptionsscreenON;
+                mats[1] = m_EMoptionsscreenON;
                 AudioListener.volume = 0.5f;
             }
         }
-        if (Tablet.GetComponent<Renderer>().material == m_EMoptionsscreenOFF)
+        if (mats[1] == m_EMoptionsscreenOFF)
         {
             if (OPTIONON == false)
             {
-                Tablet.GetComponent<Renderer>().material = m_EMoptionsscreenOFF;
+                mats[1] = m_EMoptionsscreenOFF;
                 AudioListener.volume = 0f;
             }
         }
-
-        if (Vector3.Distance(Hand.transform.position, ButtonCreditScreenOPTIONON.transform.position) < HTM)
+        
+        if (Vector3.Distance(Hand.transform.position, ButtonCreditScreenOPTIONON.transform.position) < HTM && Check5 == true)
         {
             OPTIONON = true;
         }
-        if (Vector3.Distance(Hand.transform.position, ButtonCreditScreenOPTIONSCEENOFF.transform.position) < HTM)
+        if (Vector3.Distance(Hand.transform.position, ButtonCreditScreenOPTIONSCEENOFF.transform.position) < HTM && Check6 == true)
         {
             OPTIONON = false;
         }
 
-        if (Vector3.Distance(Hand.transform.position, ButtonBack.transform.position) < HTM)
+        if (Vector3.Distance(Hand.transform.position, ButtonBack.transform.position) < HTM && Check3 == false)
         {
-            Tablet.GetComponent<Renderer>().material = m_EMstartscreen;
+            mats[1] = m_EMstartscreen;
             ButtonScreenStartScreen.SetActive(false);
             ButtonScreenCredit.SetActive(false);
             ButtonScreenExit.SetActive(false);
@@ -233,9 +307,9 @@ public class TabletMenu : MonoBehaviour
             ButtonScreenStartScreen.SetActive(true);
         }
 
-        if (Vector3.Distance(Hand.transform.position, ExitScreen.transform.position) < HTM)
+        if (Vector3.Distance(Hand.transform.position, ExitScreen.transform.position) < HTM && Check1 == true)
         {
-            Tablet.GetComponent<Renderer>().material = m_EMexitscreen;
+            mats[1] = m_EMexitscreen;
             ButtonScreenStartScreen.SetActive(false);
             ButtonScreenCredit.SetActive(false);
             ButtonScreenExit.SetActive(false);
@@ -245,17 +319,18 @@ public class TabletMenu : MonoBehaviour
             ButtonScreenExit.SetActive(true);
         }
 
-        if (Vector3.Distance(Hand.transform.position, ButtonExitGame.transform.position) < HTM)
+        if (Vector3.Distance(Hand.transform.position, ButtonExitGame.transform.position) < HTM && Check3 == true)
         {
          //   Application.Quit();
         }
 
-        if(Vector3.Distance(Hand.transform.position, StartLevel.transform.position) < HTM)
+        if(Vector3.Distance(Hand.transform.position, StartLevel.transform.position) < HTM && Check4 == true)
         {
             //SceneManager.LoadScene (sceneBuildIndex: Put-the-number-here );
             //SceneManager.LoadScene (sceneName:"Put-the-name-of-the-scene-here");
         }
-
+        
+        Tablet.GetComponent<Renderer>().materials = mats;
     }
 
     
